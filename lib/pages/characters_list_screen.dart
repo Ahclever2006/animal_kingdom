@@ -25,26 +25,30 @@ class _CharactersListScreenState extends State<CharactersListScreen> {
           ],
         ),
         body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 32, top: 8),
-                child: RichText(
-                  text: TextSpan(
-                      children: [
-                        TextSpan(
-                            text: "Animals Kingdom", style: AppTheme.display1),
-                        TextSpan(text: "\n"),
-                        TextSpan(text: "Characters", style: AppTheme.display2),
-                      ]
+
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 32, top: 8),
+                  child: RichText(
+                    text: TextSpan(
+                        children: [
+                          TextSpan(
+                              text: "Animals Kingdom", style: AppTheme.display1),
+                          TextSpan(text: "\n"),
+                          TextSpan(text: "Characters", style: AppTheme.display2),
+                        ]
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: CharacterWidget(),
-              )
-            ],
+                Expanded(
+                  child: CharacterWidget(),
+                )
+              ],
+            ),
           ),
         )
     );
