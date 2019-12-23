@@ -1,3 +1,4 @@
+import 'package:animals_app/models/character.dart';
 import 'package:animals_app/widgets/character_widget.dart';
 import 'package:flutter/material.dart';
 import '../styleguide.dart';
@@ -11,6 +12,19 @@ class CharactersListScreen extends StatefulWidget {
 }
 
 class _CharactersListScreenState extends State<CharactersListScreen> {
+  PageController _pageController;
+  int currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(
+      viewportFraction: 1.0,
+      initialPage: currentPage,
+      keepPage: false
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -45,7 +59,14 @@ class _CharactersListScreenState extends State<CharactersListScreen> {
                   ),
                 ),
                 Expanded(
-                  child: CharacterWidget(),
+                  child: PageView(
+                      physics: ClampingScrollPhysics(),
+                      controller: _pageController,
+                      children:<Widget>[
+                        for(var i = 0; i < characters.length; i++)
+                          CharacterWidget(character: characters[i],pageController: _pageController, currentPage: i )
+                      ]
+                  ),
                 )
               ],
             ),
